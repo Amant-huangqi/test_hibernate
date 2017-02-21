@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lps.pojo.Users" table="users" catalog="webone"> 
+		<id name="id" type="java.lang.Integer">
+			<column name="id"></column>
+			<generator class="native"></generator>
+		</id>
+		<property name="userName" type="java.lang.String">
+			<column name="user_name"></column>
+		</property>
+	<!-- 	<property name="cityId" type="java.lang.Integer" >
+			<column name="city_id"></column>
+		</property> 
+		insert="false" update="false"
+		-->
+		<many-to-one name="city" class="com.lps.pojo.Citys" column="city_id" cascade="save-update"></many-to-one>
+		<one-to-one name="card" class="com.lps.pojo.Cards" cascade="save-update" ></one-to-one>
+	
+		<!-- <set name="departments" table="users_dep">
+			<key column="user_id"></key>
+			<many-to-many class="com.lps.pojo.Departments" column="dep_id"></many-to-many>
+		</set> -->
+	</class>
+</hibernate-mapping>
